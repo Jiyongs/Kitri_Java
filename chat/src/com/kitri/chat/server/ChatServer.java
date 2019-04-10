@@ -64,7 +64,7 @@ public class ChatServer implements Runnable {    //*프레임 extends할 예정이므로,
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// 내 창
-	// client(나) >> server   
+	// server >> clients(각자)  
 	// [inner class] : 클라이언트 만들기 / 바깥 변수를 맘대로 사용 가능함
 	class ChatClient extends Thread {
 
@@ -91,7 +91,7 @@ public class ChatServer implements Runnable {    //*프레임 extends할 예정이므로,
 		public void run() {
 			boolean flag = true;
 			while(flag) {
-				try {
+				try {					
 					String msg = in.readLine();
 					System.out.println("클라이언트가 보낸 메세지 : " + msg); //프로토콜|메세지형식...
 					StringTokenizer st = new StringTokenizer(msg, "|");
@@ -126,18 +126,28 @@ public class ChatServer implements Runnable {    //*프레임 extends할 예정이므로,
 							String tmp = st.nextToken();   //안녕하세요.
 							for(ChatClient cc : list) {
 								if(cc.name.equals(to)) {
-									cc.unicast(ChatConstance.SC_MESSAGE + "|☆" + name + "☆" + tmp);  // 받은 귓속말
+									cc.unicast(ChatConstance.SC_MESSAGE + "|☆" + name + "☆" + tmp);  // 발신자 + 받은 귓속말
 									break;
 								}
 							}
 						} break;
-						
+						///////////////////////////@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 						case ChatConstance.CS_PAPER : {
-							
+							// 300|홍길동|홍길동님 쪽지 보냅니다.
+							String to = st.nextToken();   //홍길동
+							String tmp = st.nextToken(); //홍길동님 쪽지 보냅니다.
+							for(ChatClient cc : list) {
+								if(cc.name.equals(to)) {
+									cc.unicast(ChatConstance.SC_PAPER + "|" + name + "|" + tmp);  // 발신자 + 받은 쪽지
+								}
+							}
 						} break;
 						
 						case ChatConstance.CS_RENAME : {
-							
+							//400|새대화명
+							String newname = st.nextToken(); //새대화명
+							multicast(ChatConstance.SC_RENAME + "|" + name + "|" + newname);
+							name = newname; //서버상의 대화명도 바꾼 대화명으로 변경!
 						} break;
 						
 						case ChatConstance.CS_DISCONNECT : {

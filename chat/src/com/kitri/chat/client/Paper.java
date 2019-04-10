@@ -1,27 +1,18 @@
 package com.kitri.chat.client;
 import java.awt.CardLayout;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JEditorPane;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.SwingConstants;
 
-import javax.swing.WindowConstants;
+import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.SwingUtilities;
 
 public class Paper extends javax.swing.JFrame {
 	JLabel fl;
 	JLabel tl;
 	JLabel to;
-	JTextArea letter;
-	JButton answer;
-	JPanel cardp;
-	JButton cancel;                     //*************
-	JButton ok;                          //**************
+	JTextArea letter;         //*************
+	JButton answer;           //*************
+	JPanel cardp;       
+	JButton cancel;           //*************
+	JButton ok;               //*************
 	JScrollPane jScrollPane1;
 	JLabel from;
 	
@@ -44,7 +35,7 @@ public class Paper extends javax.swing.JFrame {
 		
 		setLocationRelativeTo(null);
 		setResizable(false);
-//		setVisible(true);
+		//setVisible(true);
 	}
 	
 	private void initGUI() {
@@ -129,6 +120,4 @@ public class Paper extends javax.swing.JFrame {
 		}
 	}
 
-	
-	
 }
