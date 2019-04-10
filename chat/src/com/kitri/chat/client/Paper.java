@@ -20,8 +20,8 @@ public class Paper extends javax.swing.JFrame {
 	JTextArea letter;
 	JButton answer;
 	JPanel cardp;
-	JButton cancel;
-	JButton ok;
+	JButton cancel;                     //*************
+	JButton ok;                          //**************
 	JScrollPane jScrollPane1;
 	JLabel from;
 	
@@ -129,4 +129,6 @@ public class Paper extends javax.swing.JFrame {
 		}
 	}
 
+	
+	
 }

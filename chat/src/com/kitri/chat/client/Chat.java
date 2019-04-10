@@ -12,7 +12,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-public class Chat extends javax.swing.JFrame implements ListSelectionListener {
+public class Chat extends javax.swing.JFrame {
 	JScrollPane jScrollPane1;
 	JTextField whomsend;
 	JLabel whom;
@@ -45,8 +45,6 @@ public class Chat extends javax.swing.JFrame implements ListSelectionListener {
 		setLocationRelativeTo(null);
 		setResizable(false);
 //		setVisible(true);
-		
-		list.addListSelectionListener(this);
 	}
 	
 	private void initGUI() {
@@ -118,10 +116,6 @@ public class Chat extends javax.swing.JFrame implements ListSelectionListener {
 		}
 	}
 
-	@Override
-	public void valueChanged(ListSelectionEvent e) {
-		String selName = list.getSelectedValue();
-		whom.setText(selName);
-	}
+
 
 }

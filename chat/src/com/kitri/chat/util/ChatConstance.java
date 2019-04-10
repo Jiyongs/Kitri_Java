@@ -1,12 +1,14 @@
 package com.kitri.chat.util;
 
+	// client(나) >> server >> client(상대방)
+
 public class ChatConstance {
 	
-	// ip
+	// ip 정의
 	public static final int PORT = 9876;
 
 	// 프로토콜 정의
-	// client(나) >> server
+	// client(나) >> server                                                   //[Login.java]
 	// ① 접속								100|대화명  
 	// ② 모든사람 메세지					200|메세지
 	// ③ 특정사람 메세지 (귓속말)		250|대상자|메세지
@@ -21,7 +23,7 @@ public class ChatConstance {
 	public static final int CS_RENAME = 400;
 	public static final int CS_DISCONNECT = 900;
 	
-	// server >> client(상대방)
+	// server >> client(상대방)                                              //[ChatServer.java]
 	// ① 접속								100|접속자대화명
 	// ② 메세지	(전체)						200|[보낸사람대화명] 메세지         //메세지 출력 형태로 보내버림
 	// ③ 메세지  (특정)						200|☆보낸사람대화명☆ 메세지
